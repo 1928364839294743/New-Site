@@ -5,91 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Loyal to You</title>
     <style>
+        /* ========================================
+           RESET STYLES
+           ======================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* ========================================
+           BODY & BACKGROUND
+           Creates black background with subtle grid overlay
+           ======================================== */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            /* Monospace font for technical/code aesthetic */
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
             min-height: 100vh;
-            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-            color: #1a1a1a;
-            padding: 3rem 1.5rem;
+            background: #000000; /* Pure black for cutting-edge feel */
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            position: relative; /* For ::before pseudo-element positioning */
         }
 
+        /* Grid overlay pattern for tech/terminal aesthetic */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Creates subtle grid pattern using gradients */
+            background: 
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px; /* Grid cell size */
+            pointer-events: none; /* Allow clicks to pass through */
+            opacity: 0.3;
+        }
+
+        /* ========================================
+           MAIN CONTAINER
+           ======================================== */
         .container {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1; /* Above the grid background */
         }
 
+        /* ========================================
+           MAIN HEADING
+           Neon green, lowercase for modern minimalism
+           ======================================== */
         h1 {
-            font-size: 2.75rem;
-            margin-bottom: 2.5rem;
-            font-weight: 800;
-            text-align: center;
-            line-height: 1.2;
-            color: #000;
-            letter-spacing: -0.02em;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 400; /* Light weight for elegance */
+            line-height: 1.1;
+            color: #00ff00; /* Neon green accent - cyberpunk aesthetic */
+            letter-spacing: -0.03em; /* Tight spacing for modern look */
+            animation: fadeInDown 0.6s ease-out; /* Entry animation */
+            text-transform: lowercase; /* Modern minimalist style */
+            /* Use sans-serif for heading, contrasting with body monospace */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
+        /* ========================================
+           DESCRIPTION TEXT
+           ======================================== */
         .description {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.7;
             margin-bottom: 4rem;
-            color: #2c2c2c;
-            text-align: center;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #a0a0a0; /* Muted gray for body text */
+            letter-spacing: 0.01em; /* Slight spacing for readability in monospace */
         }
 
+        /* Individual paragraphs with staggered fade-in */
         .description p {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.2rem;
+            opacity: 0; /* Start invisible for animation */
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
+        /* Staggered animation delays for sequential appearance */
+        .description p:nth-child(1) { animation-delay: 0.2s; }
+        .description p:nth-child(2) { animation-delay: 0.3s; }
+        .description p:nth-child(3) { animation-delay: 0.4s; }
+        .description p:nth-child(4) { animation-delay: 0.5s; }
+
+        /* ========================================
+           MARKETS CONTAINER
+           Card-like container with green accent border
+           ======================================== */
         .markets {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 40px rgba(0, 0, 0, 0.03);
+            background: rgba(0, 255, 0, 0.02); /* Subtle green tint */
+            border: 1px solid rgba(0, 255, 0, 0.2); /* Green border */
+            border-radius: 2px; /* Minimal rounding for sharp aesthetic */
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out; /* Slides up on entry */
+            animation-delay: 0.4s; /* Appears after text */
+            animation-fill-mode: both; /* Maintains animation end state */
+            transition: all 0.3s ease; /* Smooth hover transitions */
         }
 
+        /* Enhanced border on hover */
+        .markets:hover {
+            border-color: rgba(0, 255, 0, 0.4); /* Brighter green on hover */
+            background: rgba(0, 255, 0, 0.03); /* Slightly more visible */
+        }
+
+        /* ========================================
+           MARKET CATEGORIES
+           Available, Beta, Coming Soon sections
+           ======================================== */
         .market-category {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
         }
 
+        /* Remove border from last category */
         .market-category:last-child {
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: none;
         }
 
+        /* Category headers (AVAILABLE, BETA, COMING SOON) */
         .market-category h2 {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 0.875rem;
-            color: #000;
-            letter-spacing: -0.01em;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #00ff00; /* Neon green to match theme */
+            letter-spacing: 0.15em; /* Wide spacing for emphasis */
+            text-transform: uppercase; /* All caps for headers */
+            transition: all 0.2s ease; /* Smooth hover effect */
         }
 
+        /* Expand letter spacing on hover for futuristic effect */
+        .market-category:hover h2 {
+            letter-spacing: 0.2em;
+        }
+
+        /* ========================================
+           MARKET ITEMS
+           Individual product/service entries
+           ======================================== */
         .market-item {
-            margin-left: 1.5rem;
-            margin-bottom: 0.625rem;
-            color: #4a4a4a;
-            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff; /* White text */
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-left: 2px solid transparent; /* Hidden left border */
+            transition: all 0.2s ease; /* Smooth hover animation */
+            cursor: default;
+            letter-spacing: 0.02em; /* Slight spacing for monospace readability */
+        }
+
+        /* Interactive hover state */
+        .market-item:hover {
+            background: rgba(0, 255, 0, 0.05); /* Green highlight background */
+            border-left-color: #00ff00; /* Show green accent border */
+            transform: translateX(4px); /* Slide right slightly */
+            color: #00ff00; /* Text turns green */
         }
 
         .market-item:last-child {
             margin-bottom: 0;
         }
 
+        /* ========================================
+           STATUS BADGES (unused but kept for future use)
+           ======================================== */
         .status {
             font-size: 0.8125rem;
             padding: 0.2rem 0.625rem;
@@ -107,75 +199,115 @@
             color: #6b7280;
         }
 
+        /* ========================================
+           ANIMATIONS
+           Smooth entry animations for page elements
+           ======================================== */
+        
+        /* Simple fade in (for description paragraphs) */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Fade in while sliding down (for heading) */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Start above */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* End at normal position */
+            }
+        }
+
+        /* Fade in while sliding up (for markets container) */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px); /* Start below */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* End at normal position */
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           Mobile optimizations for smaller screens
+           ======================================== */
         @media (max-width: 640px) {
             body {
-                padding: 2rem 1rem;
+                padding: 2.5rem 1rem; /* Less padding on mobile */
             }
 
             h1 {
-                font-size: 2.25rem;
+                font-size: 2rem; /* Smaller heading */
             }
             
             .description {
-                font-size: 1.05rem;
+                font-size: 0.9rem; /* Smaller text */
             }
 
             .markets {
-                padding: 1.75rem 1.5rem;
+                padding: 1.5rem 1.25rem; /* Tighter padding */
+            }
+
+            .market-item {
+                padding: 0.5rem 0.75rem; /* Smaller item padding */
             }
         }
     </style>
 </head>
 <body>
+    <!-- Main content container - centered and z-indexed above grid background -->
     <div class="container">
-        <h1>AI that is loyal ONLY to you</h1>
         
+        <!-- Main heading - neon green, lowercase for modern aesthetic -->
+        <h1>ai that is loyal only to you</h1>
+        
+        <!-- Description section - explains the value proposition -->
         <div class="description">
-            <p>Search engines, stores, and AI chatbots want you to buy high-priced products. They make money on ads, and high-priced items are the only ones that can afford their ads. So better prices are never shown. You have no idea what's out there.</p>
-            <br>
+            <p>Search engines, stores, and AI chatbots want you to buy high-priced products.</p>
+            
+            <p>They make money on ads, and high-priced items are the only ones that can afford their ads.</p>
+            
+            <p>So better prices are never shown. You have no idea what's out there.</p>
+            
             <p>We find you the best prices in 1 tap, so you can thrive. We show you unbiased markets.</p>
         </div>
 
+        <!-- Markets container - displays all available services organized by status -->
         <div class="markets">
+            
+            <!-- Available services - fully launched -->
             <div class="market-category">
-                <h2>eCommerce</h2>
-                <div class="market-item">Price Fighter</div>
-                <div class="market-item">Spot Market</div>
+                <h2>available</h2>
+                <div class="market-item">ecommerce / price fighter</div>
+                <div class="market-item">ecommerce / spot market</div>
             </div>
 
+            <!-- Beta services - available for testing -->
             <div class="market-category">
-                <h2>Grocery baskets</h2>
-                <div class="market-item"><span class="status beta">Beta available</span></div>
+                <h2>beta</h2>
+                <div class="market-item">grocery baskets</div>
+                <div class="market-item">gas</div>
+                <div class="market-item">healthcare procedures</div>
+                <div class="market-item">rideshare</div>
             </div>
 
+            <!-- Coming soon - in development -->
             <div class="market-category">
-                <h2>Gas</h2>
-                <div class="market-item"><span class="status beta">Beta available</span></div>
-            </div>
-
-            <div class="market-category">
-                <h2>Healthcare procedures</h2>
-                <div class="market-item"><span class="status beta">Beta available</span></div>
-            </div>
-
-            <div class="market-category">
-                <h2>Hotels</h2>
-                <div class="market-item"><span class="status soon">Coming soon</span></div>
-            </div>
-
-            <div class="market-category">
-                <h2>Flights</h2>
-                <div class="market-item"><span class="status soon">Coming soon</span></div>
-            </div>
-
-            <div class="market-category">
-                <h2>Rideshare</h2>
-                <div class="market-item"><span class="status beta">Beta available</span></div>
-            </div>
-
-            <div class="market-category">
-                <h2>Medicines</h2>
-                <div class="market-item"><span class="status soon">Coming soon</span></div>
+                <h2>coming soon</h2>
+                <div class="market-item">hotels</div>
+                <div class="market-item">flights</div>
+                <div class="market-item">medicines</div>
             </div>
         </div>
     </div>
