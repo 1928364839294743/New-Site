@@ -165,6 +165,12 @@
             transition: all 0.2s ease; /* Smooth hover animation */
             cursor: default;
             letter-spacing: 0.02em; /* Slight spacing for monospace readability */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        /* Clickable items get pointer cursor */
+        a.market-item {
+            cursor: pointer;
         }
 
         /* Interactive hover state */
@@ -276,11 +282,11 @@
         <div class="description">
             <p>Search engines, stores, and AI chatbots want you to buy high-priced products.</p>
             
-            <p>They make money on ads, and high-priced items are the only ones that can afford their ads.</p>
+            <p>They make money on ads, and high-priced items are the ones that can afford them.</p>
             
-            <p>So better prices are never shown. You have no idea what's out there.</p>
+            <p>So better prices are never shown. You never see what's *actually* out there.</p>
             
-            <p>We find you the best prices in 1 tap, so you can thrive. We show you unbiased markets.</p>
+            <p>We find you the best prices in 1 tap. We show you unbiased markets.</p>
         </div>
 
         <!-- Markets container - displays all available services organized by status -->
@@ -289,8 +295,7 @@
             <!-- Available services - fully launched -->
             <div class="market-category">
                 <h2>available</h2>
-                <div class="market-item">ecommerce / price fighter</div>
-                <div class="market-item">ecommerce / spot market</div>
+                <a href="https://price-fighter.com" class="market-item">ecommerce</a>
             </div>
 
             <!-- Beta services - available for testing -->
