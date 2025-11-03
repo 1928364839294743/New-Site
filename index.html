@@ -14,63 +14,114 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             min-height: 100vh;
-            background: #f9fafb;
-            color: #111827;
-            padding: 2rem 1rem;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            color: #1a1a1a;
+            padding: 3rem 1.5rem;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
             text-align: center;
+            line-height: 1.2;
+            color: #000;
+            letter-spacing: -0.02em;
         }
 
         .description {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            margin-bottom: 3rem;
-            color: #374151;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+            color: #2c2c2c;
+            text-align: center;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .description p {
+            margin-bottom: 1.25rem;
         }
 
         .markets {
-            margin-top: 3rem;
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 40px rgba(0, 0, 0, 0.03);
         }
 
         .market-category {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .market-category:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         .market-category h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #111827;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.875rem;
+            color: #000;
+            letter-spacing: -0.01em;
         }
 
         .market-item {
             margin-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #4b5563;
+            margin-bottom: 0.625rem;
+            color: #4a4a4a;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .market-item:last-child {
+            margin-bottom: 0;
         }
 
         .status {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
+            padding: 0.2rem 0.625rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .status.beta {
+            background: #e8f4f8;
+            color: #0369a1;
+        }
+
+        .status.soon {
+            background: #f3f4f6;
             color: #6b7280;
         }
 
         @media (max-width: 640px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
             h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
             
             .description {
-                font-size: 1rem;
+                font-size: 1.05rem;
+            }
+
+            .markets {
+                padding: 1.75rem 1.5rem;
             }
         }
     </style>
@@ -88,43 +139,43 @@
         <div class="markets">
             <div class="market-category">
                 <h2>eCommerce</h2>
-                <div class="market-item">- Price Fighter</div>
-                <div class="market-item">- Spot Market</div>
+                <div class="market-item">Price Fighter</div>
+                <div class="market-item">Spot Market</div>
             </div>
 
             <div class="market-category">
                 <h2>Grocery baskets</h2>
-                <div class="market-item">- <span class="status">Beta available</span></div>
+                <div class="market-item"><span class="status beta">Beta available</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Gas</h2>
-                <div class="market-item">- <span class="status">Beta available</span></div>
+                <div class="market-item"><span class="status beta">Beta available</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Healthcare procedures</h2>
-                <div class="market-item">- <span class="status">Beta available</span></div>
+                <div class="market-item"><span class="status beta">Beta available</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Hotels</h2>
-                <div class="market-item">- <span class="status">Coming soon</span></div>
+                <div class="market-item"><span class="status soon">Coming soon</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Flights</h2>
-                <div class="market-item">- <span class="status">Coming soon</span></div>
+                <div class="market-item"><span class="status soon">Coming soon</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Rideshare</h2>
-                <div class="market-item">- <span class="status">Beta available</span></div>
+                <div class="market-item"><span class="status beta">Beta available</span></div>
             </div>
 
             <div class="market-category">
                 <h2>Medicines</h2>
-                <div class="market-item">- <span class="status">Coming soon</span></div>
+                <div class="market-item"><span class="status soon">Coming soon</span></div>
             </div>
         </div>
     </div>
